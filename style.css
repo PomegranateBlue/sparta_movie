@@ -1,0 +1,50 @@
+@import "./styles/movieCard.css";
+@import "./styles/movieData.css";
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: rgb(44, 44, 44);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  align-items: center;
+}
+
+header > span {
+  margin: 10px;
+}
+
+header > input {
+  font-size: 24px;
+  width: 50%;
+  height: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.8;
+}
+
+header > button {
+  background: transparent;
+  color: white;
+  font-size: 24px;
+  margin: 20px;
+  border: 1px solid white;
+}
+#title {
+  color: white;
+  font-size: 40px;
+}
+
+#movieList {
+  background-color: blue;
+  width: 90%;
+  margin: 0px auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

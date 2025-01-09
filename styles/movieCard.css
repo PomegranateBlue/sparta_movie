@@ -1,5 +1,25 @@
-#movieCard {
-  width: 100px;
-  height: 240px;
-  background-color: green;
+.movieCard {
+  display: flex;
+  width: 160px;
+  height: 280px;
+  flex-direction: column;
+  font-size: 16px;
+  align-items: left;
+  color: white;
+  border: 2px solid black;
+  border-radius: 8px;
+  justify-content: space-evenly;
+}
+
+#movieImage {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  overflow: hidden;
+}
+#movieImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

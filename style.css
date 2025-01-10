@@ -1,5 +1,6 @@
 @import "./styles/movieCard.css";
 @import "./styles/movieData.css";
+@import "./styles/movieSearchList.css";
 html,
 body {
   margin: 0;

@@ -1,16 +1,23 @@
 import { options } from "../app.js";
-let userInput = document.querySelector("#userInput").value;
 
-const movieSearch = async () => {
+const SearchMovieBaseUrl = "https://api.themoviedb.org/3/search/movie";
+
+const userInput = document.querySelector("#userInput");
+const searchList = document.querySelector(".movieSearchList");
+//여기다가 영화 카드 늘여놓기
+userInput.addEventListener("input", async () => {
+  const searchKeyword = userInput.value.trim();
+
   try {
     const res = await fetch(
-      `https://api.themoviedb.org/3/search/collection?query=${userInput}&include_adult=false&language=en-US&page=1`,
+      `${SearchMovieBaseUrl}?include_adult=true&language=ko-KR&query=${encodeURIComponent(
+        searchKeyword
+      )}`,
       options
     );
-    const data = res.json();
+    const data = await res.json();
+    console.log(data);
   } catch (error) {
-    console.log("Movie search has a problem", error);
+    console.log(error);
   }
-};
-
-movieSearch();
+});

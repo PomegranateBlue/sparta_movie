@@ -55,30 +55,36 @@ let movieTitle = document.querySelector("#movieTitle");
 let movieRating = document.querySelector("#movieRating");
 const movieContainer = document.querySelector(".movieContainer");
 
-const fetchData = async () => {
+export const fetchData = async () => {
   try {
     const res = await fetch(
       "https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1",
       options
     );
-
     const data = await res.json();
     console.log(data);
-    for (let i = 0; i < data.results.length; i++) {
-      let movieContent = data.results[i];
-      movieImage = movieContent.poster_path;
-      movieTitle = movieContent.title;
-      movieRating = movieContent.vote_average;
-      let tempHtml = `<div class="movieCard">
-        <div id="movieImage"><img src=https://image.tmdb.org/t/p/w342${movieImage}></div>
-        <div id="movieTitle">${movieTitle}</div>
-        <div id="movieRating">${movieRating}</div>
-      </div>`;
-      movieContainer.innerHTML += tempHtml;
-    }
+    return data;
   } catch (error) {
     console.log("error occurred", error);
+    return null;
+  }
+};
+
+const renderMovieCard = async () => {
+  const data = await fetchData();
+  for (let i = 0; i < data.results.length; i++) {
+    let movieContent = data.results[i];
+    movieImage = movieContent.poster_path;
+    movieTitle = movieContent.title;
+    movieRating = movieContent.vote_average;
+    let tempHtml = `<div class="movieCard">
+      <div id="movieImage"><img src=https://image.tmdb.org/t/p/w342${movieImage}></div>
+      <div id="movieTitle">${movieTitle}</div>
+      <div id="movieRating">${movieRating}</div>
+    </div>`;
+    movieContainer.innerHTML += tempHtml;
   }
 };
 
 fetchData();
+renderMovieCard();

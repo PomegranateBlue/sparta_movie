@@ -1,23 +1,69 @@
 import { options } from "../app.js";
-
-const SearchMovieBaseUrl = "https://api.themoviedb.org/3/search/movie";
-
-const userInput = document.querySelector("#userInput");
-const searchList = document.querySelector(".movieSearchList");
+import { fetchData } from "./movieCard.js";
+//const SearchMovieBaseUrl = "https://api.themoviedb.org/3/search/movie";
+export let searchMovieData = [];
+const userInput = document.querySelector("#userInput"); // 사용자 입력 감지
+const searchContainer = document.querySelector(".movieContainer"); //검색한 무비카드 담는 태그
 //여기다가 영화 카드 늘여놓기
-userInput.addEventListener("input", async () => {
-  const searchKeyword = userInput.value.trim();
 
+//search API 호출출
+const searchMovie = async (query) => {
   try {
     const res = await fetch(
-      `${SearchMovieBaseUrl}?include_adult=true&language=ko-KR&query=${encodeURIComponent(
-        searchKeyword
+      `https://api.themoviedb.org/3/search/movie?include_adult=true&language=ko-KR&query=${encodeURIComponent(
+        query
       )}`,
       options
     );
     const data = await res.json();
+    searchMovieData += data;
+
+    renderSearchMovie(data.results, query);
+    //검색어를 렌더링하는  함수에 전달하고 ,data의 results 부분전달
     console.log(data);
+    console.log(typeof data.results);
   } catch (error) {
-    console.log(error);
+    console.error("Error on movieSearch.js", error);
+  }
+};
+
+//사용자 검색어 처리
+
+userInput.addEventListener("input", () => {
+  const query = userInput.value.trim();
+  const mainPage = document.querySelector(".movieContainer");
+  if (query === "") {
+    searchContainer.innerHTML = "";
+    fetchData();
+  } else {
+    searchMovie(query);
   }
 });
+
+//검색한 거 화면에 보여지는 함수
+//movieData는 API로부터 받아온 영화 데이터이,고,query는 사용자의 검색어 입력이다
+//API 호출 시 renderSearchMovie를 호출하면서 보내준 데이터는 data.results
+const renderSearchMovie = (movieData, query) => {
+  searchContainer.innerHTML = "";
+
+  const searchFilter = movieData.filter((movie) => {
+    const { title, original_title, overview } = movie;
+    const queryLow = query.toLowerCase();
+    return (
+      (title && title.toLowerCase().includes(queryLow)) ||
+      (original_title && original_title.toLowerCase().includes(queryLow)) ||
+      (overview && overview.toLowerCase().includes(queryLow))
+    );
+  });
+  //필터링 된 거 기준 화면 렌더링에 구현
+  searchFilter.forEach((movie) => {
+    const { poster_path, title, vote_average } = movie;
+    const movieCard = `<div class="movieCard">
+    <div id="searchMovieImage"><img src=https://image.tmdb.org/t/p/w342${poster_path}></div>
+    <div id="searchMovieTitle">${title}</div>
+    <div id="searchMovieRating">${vote_average}</div>
+  </div>`;
+
+    searchContainer.innerHTML += movieCard;
+  });
+};

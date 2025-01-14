@@ -57,11 +57,12 @@ const renderSearchMovie = (movieData, query) => {
   });
   //필터링 된 거 기준 화면 렌더링에 구현
   searchFilter.forEach((movie) => {
-    const { poster_path, title, vote_average } = movie;
+    const { poster_path, title, vote_average, id } = movie;
     const movieCard = `<div class="movieCard">
     <div id="searchMovieImage"><img src=https://image.tmdb.org/t/p/w342${poster_path}></div>
     <div id="searchMovieTitle">${title}</div>
     <div id="searchMovieRating">${vote_average}</div>
+    <div data-id="${id}"></div>
   </div>`;
 
     searchContainer.innerHTML += movieCard;

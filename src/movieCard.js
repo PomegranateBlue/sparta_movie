@@ -53,6 +53,10 @@ import { options } from "../app.js";
 let movieImage = document.querySelector("#movieImage");
 let movieTitle = document.querySelector("#movieTitle");
 let movieRating = document.querySelector("#movieRating");
+let movieId = document.querySelector("#movieId");
+let movieOverview = document.querySelector("#movieOverview");
+let movieRelease = document.querySelector("#movieRelease");
+
 const movieContainer = document.querySelector(".movieContainer");
 
 export const fetchData = async () => {
@@ -77,10 +81,16 @@ const renderMovieCard = async () => {
     movieImage = movieContent.poster_path;
     movieTitle = movieContent.title;
     movieRating = movieContent.vote_average;
+    movieId = movieContent.id;
+    movieOverview = movieContent.overview;
+    movieRelease = movieContent.release_date;
     let tempHtml = `<div class="movieCard">
       <div id="movieImage"><img src=https://image.tmdb.org/t/p/w342${movieImage}></div>
       <div id="movieTitle">${movieTitle}</div>
       <div id="movieRating">${movieRating}</div>
+      <div data-id="${movieId}"></div>
+      <div data-overview="${movieOverview}"></div>
+      <div data-release="${movieRelease}"></div>
     </div>`;
     movieContainer.innerHTML += tempHtml;
   }

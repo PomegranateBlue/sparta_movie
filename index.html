@@ -10,7 +10,7 @@
     <header>
       <span id="title">스파르타 무비</span>
       <input type="text" placeholder="영화를 검색하세요..." id="userInput" />
-      <button>북마크 보기</button>
+      <button id="bookmarkPage">북마크 보기</button>
     </header>
     <main class="mainContent">
       <div class="movieContainer"></div>
@@ -18,12 +18,13 @@
     <div class="modal">
       <div class="modalContainer">
         <div class="modalContent">
-          <div>moviePoster</div>
-          <div>movietitle</div>
-          <div>movieOverview</div>
-          <div>movieRating</div>
-          <div>movieRelease</div>
-          <div>bookmark</div>
+          <button id="closeModalBtn">닫기</button>
+          <div id="modalMoviePoster"></div>
+          <div id="modalMovieTitle"></div>
+          <div id="modalMovieOverview"></div>
+          <div id="modalMovieRating"></div>
+          <div id="modalMovieRelease"></div>
+          <button id="bookmarkBtn">북마크추가</button>
         </div>
       </div>
     </div>
@@ -32,6 +33,6 @@
     <script type="module" src="/src/movieCard.js"></script>
     <script type="module" src="/src/movieModal.js"></script>
     <script type="module" src="/src/movieSearch.js"></script>
-    <script type="module" src="test.js"></script>
+    <script type="module" src="/src/movieBookmark.js"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 import { options } from "../app.js";
-import { fetchData } from "./movieCard.js";
+import { fetchData, renderMovieCard } from "./movieCard.js";
 //const SearchMovieBaseUrl = "https://api.themoviedb.org/3/search/movie";
 export let searchMovieData = [];
 const userInput = document.querySelector("#userInput"); // 사용자 입력 감지
@@ -33,8 +33,9 @@ userInput.addEventListener("input", () => {
   const query = userInput.value.trim();
   const mainPage = document.querySelector(".movieContainer");
   if (query === "") {
-    searchContainer.innerHTML = "";
+    //searchContainer.innerHTML = "";
     fetchData();
+    renderMovieCard();
   } else {
     searchMovie(query);
   }

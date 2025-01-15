@@ -74,7 +74,7 @@ export const fetchData = async () => {
   }
 };
 
-const renderMovieCard = async () => {
+export const renderMovieCard = async () => {
   const data = await fetchData();
   for (let i = 0; i < data.results.length; i++) {
     let movieContent = data.results[i];

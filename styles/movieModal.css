@@ -1,26 +1,75 @@
-/* .modal {
-  display: flex;
+.modal {
+  display: none;
   position: fixed;
   top: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.5);
   width: 100%;
   height: 100%;
+  background-color: rgba(85, 81, 81, 0.8);
+  z-index: 1000;
 }
+
 .modalContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  overflow-y: scroll;
+  position: relative;
+  background-color: #352461;
+  border: 2px solid white;
+  border-radius: 8px;
+  width: 600px;
+  margin: 0 auto;
   height: 100%;
+  box-sizing: border-box;
+}
+
+#closeModalBtn {
+  width: 10%;
+  margin: 0 auto;
+  font-size: 14px;
+  padding: 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 8px;
+  color: white;
+  background-color: rgba(251, 43, 43, 0.773);
+}
+
+#modalMoviePoster {
+  margin: 0 auto;
+}
+
+#modalMovieTitle {
+  font-size: 24px;
+  font-weight: 800;
+  margin-top: 5px;
+  padding-left: 10px;
+}
+
+#modalMovieOverview {
+  padding: 10px;
+}
+
+#modalMovieRating {
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+#modalMovieRelease {
+  font-size: 18px;
+  padding-left: 10px;
 }
 
 .modalContent {
-  background-color: white;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: rgba(222, 215, 215, 0.852);
+}
+
+#bookmarkBtn {
+  width: 75%;
+  height: 36px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  width: 80%;
-  text-align: center;
-} */
+  font-size: 16px;
+}

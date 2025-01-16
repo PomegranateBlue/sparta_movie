@@ -1,8 +1,12 @@
-
-
 let bookmarkContainer = document.querySelector(".movieContainer");
 const addBookmark = document.querySelector("#bookmarkBtn");
 const bookmarkPage = document.querySelector("#bookmarkPage");
+
+let isBookmark = false;
+let previous = "";
+const showBookmark = () => {
+  isBookmark = !isBookmark;
+};
 const saveMovieToLocal = () => {
   const bookmarkList =
     JSON.parse(localStorage.getItem("bookmarkedMovie")) || [];
@@ -45,5 +49,13 @@ const renderBookmarkList = () => {
   });
 };
 
-bookmarkPage.addEventListener("click", renderBookmarkList);
-renderBookmarkList();
+bookmarkPage.addEventListener("click", () => {
+  showBookmark();
+  if (isBookmark) {
+    previous = bookmarkContainer.innerHTML;
+    renderBookmarkList();
+  } else {
+    bookmarkContainer.innerHTML = previous;
+  }
+});
+// renderBookmarkList();

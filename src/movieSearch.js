@@ -6,7 +6,7 @@ const userInput = document.querySelector("#userInput"); // 사용자 입력 감�
 const searchContainer = document.querySelector(".movieContainer"); //검색한 무비카드 담는 태그
 //여기다가 영화 카드 늘여놓기
 
-//search API 호출출
+//search API 호출
 const searchMovie = async (query) => {
   try {
     const res = await fetch(
@@ -27,19 +27,33 @@ const searchMovie = async (query) => {
   }
 };
 
+//debounce
+function debounce(callback, delay) {
+  let timeoutId; // 타이머 ID를 저장할 변수
+  return function (...args) {
+    clearTimeout(timeoutId); // 기존 타이머 제거
+    timeoutId = setTimeout(() => {
+      callback(...args); // 딜레이 이후 콜백 실행
+    }, delay);
+  };
+}
+
 //사용자 검색어 처리
 
-userInput.addEventListener("input", () => {
-  const query = userInput.value.trim();
-  const mainPage = document.querySelector(".movieContainer");
-  if (query === "") {
-    //searchContainer.innerHTML = "";
-    fetchData();
-    renderMovieCard();
-  } else {
-    searchMovie(query);
-  }
-});
+userInput.addEventListener(
+  "input",
+  debounce(() => {
+    const query = userInput.value.trim();
+    const mainPage = document.querySelector(".movieContainer");
+    if (query === "") {
+      //searchContainer.innerHTML = "";
+      fetchData();
+      renderMovieCard();
+    } else {
+      searchMovie(query);
+    }
+  }, 300)
+);
 
 //검색한 거 화면에 보여지는 함수
 //movieData는 API로부터 받아온 영화 데이터이,고,query는 사용자의 검색어 입력이다

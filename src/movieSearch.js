@@ -44,7 +44,7 @@ const renderSearchMovie = (movieData, query) => {
     const { poster_path, title, vote_average, id, overview, release_date } =
       movie;
 
-    const movieCard = `<div class="movieCard">
+    const movieCard = `<div class="movieCard overlay">
       <div id="movieImage"><img src=https://image.tmdb.org/t/p/w342${poster_path}></div>
       <div id="movieTitle">${title}</div>
       <div id="movieRating">평점 ${vote_average}</div>

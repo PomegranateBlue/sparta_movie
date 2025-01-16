@@ -37,7 +37,7 @@ const openModal = (movieData) => {
   modalMoviePoster.innerHTML = `<img src="${movieData.poster}"/>`;
   modalMovieTitle.innerHTML = `<span>${movieData.title}</span>`;
   modalMovieOverview.innerHTML = `<p>${movieData.overview}</p>`;
-  modalMovieRating.innerHTML = `<span>평균 평점 : ${movieData.rating}</span>`;
+  modalMovieRating.innerHTML = `<span>평점 : ${movieData.rating}</span>`;
   modalMovieRelease.innerHTML = `<span>개봉일 : ${movieData.release}</span>`;
 };
 

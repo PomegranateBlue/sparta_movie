@@ -15,7 +15,7 @@ export const fetchData = async () => {
       options
     );
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log("error occurred", error);
@@ -33,10 +33,10 @@ export const renderMovieCard = async () => {
     movieId = movieContent.id;
     movieOverview = movieContent.overview;
     movieRelease = movieContent.release_date;
-    let tempHtml = `<div class="movieCard">
+    let tempHtml = `<div class="movieCard overlay">
       <div id="movieImage"><img src=https://image.tmdb.org/t/p/w342${movieImage}></div>
       <div id="movieTitle">${movieTitle}</div>
-      <div id="movieRating">평점 ${movieRating}</div>
+      <div id="movieRating">평점 ${String(movieRating)}</div>
       <div data-id="${movieId}"></div>
       <div data-overview="${movieOverview}"></div>
       <div data-release="${movieRelease}"></div>

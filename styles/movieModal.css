@@ -11,13 +11,26 @@
 .modalContainer {
   overflow-y: scroll;
   position: relative;
-  background-color: #352461;
-  border: 2px solid white;
+  background-color: rgb(8, 8, 8);
+  border: 2px solid rgb(27, 26, 26);
   border-radius: 8px;
   width: 600px;
   margin: 0 auto;
   height: 100%;
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
 }
 
 #closeModalBtn {
@@ -31,6 +44,7 @@
   border-radius: 8px;
   color: white;
   background-color: rgba(251, 43, 43, 0.773);
+  cursor: pointer;
 }
 
 #modalMoviePoster {
@@ -71,5 +85,13 @@
   margin-bottom: 20px;
   margin-top: 20px;
   border-radius: 10px;
+  border: 2px solid white;
   font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#bookmarkBtn:hover {
+  background-color: black;
+  color: white;
 }

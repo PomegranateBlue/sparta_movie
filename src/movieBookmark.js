@@ -16,6 +16,7 @@ const saveMovieToLocal = () => {
     overview: document.querySelector("#modalMovieOverview").textContent,
     rating: document.querySelector("#modalMovieRating").textContent,
     release: document.querySelector("#modalMovieRelease").textContent,
+    id: document.querySelector("[data-id]").dataset.id,
   };
   bookmarkList.push(bookmarkData);
   localStorage.setItem("bookmarkedMovie", JSON.stringify(bookmarkList));
@@ -34,6 +35,9 @@ const renderBookmarkList = () => {
     <div id="movieImage"><img src=${data.poster}></div>
     <div id="movieTitle">${data.title}</div>
     <div id="movieRating">${data.rating}</div>
+    <div data-id="${data.id}"></div>
+    <div data-overview="${data.overview}"></div>
+    <div data-release="${data.release}"></div>
   </div>`;
     bookmarkContainer.innerHTML += temp;
   });

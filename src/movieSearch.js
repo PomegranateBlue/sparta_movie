@@ -61,8 +61,8 @@ userInput.addEventListener(
   debounce(() => {
     const query = userInput.value.trim();
     if (query === "") {
-      //searchContainer.innerHTML = "";
-      fetchData();
+      searchContainer.innerHTML = "";
+
       renderMovieCard();
     } else {
       searchMovie(query);
